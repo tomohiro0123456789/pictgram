@@ -208,17 +208,17 @@ public class TopicsController {
 		entity.setDescription(form.getDescription());
 		repository.saveAndFlush(entity);
 
-		if (!isImageLocal) {
-			String url = saveImageS3(image, entity);
-			entity.setPath(url);
-			repository.saveAndFlush(entity);
-		}
-
 		redirAttrs.addFlashAttribute("hasMessage", true);
 		redirAttrs.addFlashAttribute("class", "alert-info");
 //		redirAttrs.addFlashAttribute("message", "投稿に成功しました。");
 		redirAttrs.addFlashAttribute("message",
 				messageSource.getMessage("topics.create.flash.2", new String[] {}, locale));
+
+		if (!isImageLocal) {
+			String url = saveImageS3(image, entity);
+			entity.setPath(url);
+			repository.saveAndFlush(entity);
+		}
 
 		return "redirect:/topics";
 	}

@@ -3,13 +3,11 @@ spring:
     hiddenmethod:
       filter:
         enabled: true
- servlet:
- 	multipart:
-     	max-file-size: 20MB
-     	max-request-size: 20MB
- image:
- 	 local:  false
- cloud:
+servlet:
+  multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
+cloud:
   aws:
     stack:
       auto: false
