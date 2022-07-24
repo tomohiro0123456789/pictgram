@@ -14,5 +14,3 @@ cloud:
     region:
       auto: false
       static: ap-northeast-1
-image:
-           local: false
