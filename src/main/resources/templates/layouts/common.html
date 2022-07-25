@@ -56,5 +56,6 @@
         <li th:each="error : ${#fields.detailedErrors()}" class="error-message" th:text="${error.message}"/>
       </ul>
     </div>
+      <button class ="button" onclick="location.href='http://tt-pictgram/topics/topic.csv'">csv形式のファイルダウンロード</button>
 </body>
 </html>
