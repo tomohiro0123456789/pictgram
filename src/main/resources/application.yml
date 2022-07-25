@@ -23,9 +23,7 @@ spring:
                                   enable: true
      thymeleaf:
           check-template-location: false
-          
-
-                
+                    
 cloud:
   aws:
     stack:
@@ -35,11 +33,9 @@ cloud:
       static: ap-northeast-1
 
 onesignal:
-     id: ${onesignal.id}
+  id: ${onesignal.id}
   
 googlemap:
-     key: ${googlemap.key}
-
-  
+  key: ${googlemap.key}
 
   
