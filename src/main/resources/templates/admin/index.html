@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layouts/layout}">
+<head>
+<meta charset="UTF-8">
+<title>管理者ページ</title>
+</head>
+<body>
+ここは管理者用のページです。<br>
+<c:choose>
+<c:when test="${account.role == 1 }">
+投稿した情報を取り出す際に使用します。
+
+<p>
+<form method="get" th:action="|/${#authentication.principal.username}.csv|">
+<input type="submit" name="download_file" value="csvファイルをダウンロード">
+<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+</form>
+</p>
+<a href="@{/topics}"><button type="button" >ユーザーページへ</button></a>
+<p><a href="@{/logout}"><button type="button" >ログアウト</button></a></p>
+
+
+
+</body>
+</html>
