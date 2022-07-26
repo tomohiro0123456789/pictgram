@@ -74,6 +74,8 @@ import com.example.pictgram.bean.TopicCsv;
 import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
 
+import org.springframework.http.ResponseEntity;
+
 @Controller
 public class TopicsController {
 
@@ -118,6 +120,11 @@ public class TopicsController {
 			list.add(form);
 		}
 		model.addAttribute("list", list);
+
+		model.addAttribute("hasFooter", true);
+		ResponseEntity<byte[]> entity = s3.download("tags");
+		String body = new String(entity.getBody());
+		model.addAttribute("tags", body.split(System.getProperty("line.separator")));
 
 		return "topics/index";
 	}
@@ -361,11 +368,11 @@ public class TopicsController {
 
 		return mapper.writer(schema).writeValueAsString(csv);
 	}
-	@GetMapping(path = "/admin/index")
-    public String AdminTopic(Model model) {
-        model.addAttribute("form", new TopicForm());
-        return "topics/new";
-    }
 
+	@GetMapping(path = "/admin/index")
+	public String AdminTopic(Model model) {
+		model.addAttribute("form", new TopicForm());
+		return "topics/new";
+	}
 
 }
