@@ -369,10 +369,5 @@ public class TopicsController {
 		return mapper.writer(schema).writeValueAsString(csv);
 	}
 
-	@GetMapping(path = "/admin/index")
-	public String AdminTopic(Model model) {
-		model.addAttribute("form", new TopicForm());
-		return "topics/new";
-	}
 
 }
