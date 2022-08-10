@@ -34,6 +34,11 @@
                 <img src="/images/icons/logout.png" th:src="@{/images/icons/logout.png}">
              </a>
             </li>
+             <li class="nav-item">
+             <a th:href="@{/topics/topic.csv}" class="nav-link convert" data-method="post" th:data-_csrf="${_csrf.token}">
+                <img src="/images/icons/540.png" th:src="@{/images/icons/540.png}">
+             </a>
+            </li>
          </th:block>
          <th:block sec:authorize="!isAuthenticated()">
             <li class="nav-item">
@@ -55,7 +60,6 @@
       <ul>
         <li th:each="error : ${#fields.detailedErrors()}" class="error-message" th:text="${error.message}"/>
       </ul>
-    </div>
-      <button class ="button" onclick="location.href='http://tt-pictgram/topics/topic.csv'">csv形式のファイルダウンロード</button>
+    </div>      
 </body>
 </html>
